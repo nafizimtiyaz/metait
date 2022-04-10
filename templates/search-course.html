@@ -1,0 +1,69 @@
+{% extends "main.html" %}
+{% block body %}
+{% load static %}
+
+	
+	<!--page-banner-area start-->
+	<div class="page-banner height-200 bg-1">
+		<div class="d-table">
+			<div class="page-title vertical-middle text-center">
+				<h2>Our Courses</h2>
+			</div>
+		</div>
+	</div>
+	<!--page-banner-area end-->
+	
+	<!--breadcrumb-area start-->
+	<div class="breadcrumb-area mt-25">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="site-breadcrumb">
+						<ul class="list-none">
+							<li><a href="">Home</a></li>
+							<li><i class="fa fa-angle-right"></i></li>
+							<li>Our Courses</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--breadcrumb-area end-->
+	
+	<!--course-area start-->
+	<div class="course-area mt-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-2 mt-sm-50">
+					<div class="sidebar-search mb-5">
+						<form action="search" method="GET">
+						<input type="text" name="q" placeholder="Search courses name" />
+						<button><i class="fa fa-search"></i></button>
+							</form>
+					</div>
+
+					<div class="row mt-60">
+						{% for cat in a1 %}
+						<div class="col-lg-12">
+							<div class="blog-single style-1">
+								<div class="blog-thumb">
+									<a href="{%url 'single' slug=cat.slug %}"><img src="{{cat.image.url}}" alt="" /></a>
+								</div>
+								<div class="blog-desc">
+									<h3><a href="{%url 'single' slug=cat.slug %}">{{cat.title}}</a></h3>
+									<ul class="list-none">
+									</ul>
+									<p>{{cat.discription|truncatechars:100}}</p>
+								</div>
+							</div>
+						</div>
+						{%endfor%}
+					</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock body %}

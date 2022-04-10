@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for a in x %}
+<h1><a href="{%url 'd_single' slug=a.slug %}">{{a.title}}</a></h1>
+{% endfor %}
+</body>
+</html>

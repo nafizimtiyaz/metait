@@ -1,0 +1,51 @@
+{% extends "pmain.html" %}
+{% block body %}
+{% load static %}
+
+    <div class="course_details_main_body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-2">
+                    <div class="course_tab">
+                        <!-- <h5>Important Notes</h5>
+                        <ul class="course_tab_list">
+                            <li><a href="" target="_blank"><i class="far fa-file-alt"></i>Item 1</a></li>
+                            <li><a href="" target="_blank"><i class="far fa-file-alt"></i>Item 2</a></li>
+                            <li><a href="" target="_blank"><i class="far fa-file-alt"></i>Item 3</a></li>
+                        </ul> -->
+                        <h5>Lesson Index</h5>
+                        <ul class="course_tab_list">
+                            {%for c in b%}
+
+                            <li><a target="_blank" href="{%url 'main' title=c.title %}"><i class="fas fa-atlas"></i></i>{{c.title}}</a></li>
+                            {%endfor%}
+
+                            <li><a target="_blank" href="{{Quiz.slug.url}}"><i class="fas fa-atlas"></i></i>Quiz</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-md-9">
+                    <div class="course_tab_details">
+
+                        <h4 class="lesson_title">{{m.title}}</h4>
+                        <ul class="course_tab_details_items">
+                            <li class="single_course_tab_details">
+                                <img src="assets/images/courses/course-details/django.jpg" alt="">
+                                <p> </p>
+                                <img src="assets/images/courses/course-details/django2.png" alt="">
+                                <p>{{m.lecture_body}}</p>
+                            </li>
+                        </ul>
+                        <div class="pagination">
+                            <a href="" class="prev"><i class="fas fa-chevron-left"></i>Prev</a>
+                            <a href="" class="next">Next<i class="fas fa-chevron-right"></i></a>
+                        </div>
+
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+	
+{% endblock body %}

@@ -1,0 +1,80 @@
+{% extends "main.html" %}
+{% block body %}
+{% load static %}
+
+	
+	<!--page-banner-area start-->
+	<div class="page-banner height-200 bg-1">
+		<div class="d-table">
+			<div class="page-title vertical-middle text-center">
+				<h2>Our Courses</h2>
+			</div>
+		</div>
+	</div>
+	<!--page-banner-area end-->
+	
+	<!--breadcrumb-area start-->
+	<div class="breadcrumb-area mt-25">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="site-breadcrumb">
+						<ul class="list-none">
+							<li><a href="">Home</a></li>
+							<li><i class="fa fa-angle-right"></i></li>
+							<li>Our Courses</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--breadcrumb-area end-->
+	
+	<!--course-area start-->
+	<div class="course-area mt-70">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-2 mt-sm-50">
+					<div class="sidebar-search mb-5" >
+				<form action="search" method="GET">
+						<input type="text" name=""q placeholder="Search courses name" />
+						<button><i class="fa fa-search"></i></button>
+					</form>
+					</div>
+					<div class="tab-content">
+						<!--single-tab-->
+
+						<div id="grid-products" class="tab-pane fade in show active">
+							<div class="row">
+								{% for a in allcourse %}
+								<div class="col-lg-6 col-sm-6">
+
+									<div class="course-single">
+										<div class="course-thumb">
+											<a href="{%url 'single' a.slug%}"><img src="{{a.image.url}}" alt="" /></a>
+										</div>
+										<div class="course-info">
+											<div class="course-text mt-10">
+												<h3><a href="{%url 'single' a.slug%}">{{a.title}}</a></h3>
+												<p>{{a.discription|truncatechars:100|safe}}</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+
+						<!--single-tab-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--course-area end-->
+	
+	<!--footer-area start-->
+
+		<!--footer-bottom-->
+{% endblock body %}

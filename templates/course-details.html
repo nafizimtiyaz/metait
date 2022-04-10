@@ -1,0 +1,427 @@
+{% extends "main.html" %}
+{% load course_custom_tags %}
+{% block body %}
+{% load static %}
+	<!--header-area end-->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/google-places.js "></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=&#91;API_KEY&#93;"></script>
+<script>
+    jQuery(document).ready(function() {
+        $("#google-reviews").googlePlaces({
+            placeId: '[PLACES_ID]',
+            render: ['reviews'],
+            min_rating: 5,
+            max_rows: 0
+        });
+    });
+</script> -->
+	
+	<!--page-banner-area start-->
+	<div class="page-banner height-200 bg-1">
+		<div class="d-table">
+			<div class="page-title vertical-middle text-center">
+				<h2>{{obj.title}}</h2>
+			</div>
+		</div>
+	</div>
+	<!--page-banner-area end-->
+	
+	<!--breadcrumb-area start-->
+	<div class="breadcrumb-area mt-25">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="site-breadcrumb">
+						<ul class="list-none">
+							<li><a href="index.html">Home</a></li>
+							<li><i class="fa fa-angle-right"></i></li>
+							<li>Courses Details</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--breadcrumb-area end-->
+	
+	<!--course-details start-->
+	<div class="course-details-area mt-80">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="course-details mb-40">
+						<h2>{{obj.title}}</h2>
+						<div class="course-info mt-25 mb-50">
+							<ul class="list-none">
+								<li>
+									<a href="#">
+										<i class="fas fa-pencil-ruler"></i>
+										Design
+									</a>
+									<small>Category</small>
+								</li>
+<!--								<li>-->
+<!--									<a href="#">Review</a>-->
+<!--									<div class="author-rating">-->
+<!--										<i class="fa fa-star"></i>-->
+<!--										<i class="fa fa-star"></i>-->
+<!--										<i class="fa fa-star"></i>-->
+<!--										<i class="fa fa-star"></i>-->
+<!--										<i class="fa fa-star-half-o"></i>-->
+<!--										<span>(4.5 Rate)</span>-->
+<!--									</div>-->
+<!--								</li>-->
+							</ul>
+						</div>
+<!--						<img src="{{obj.image.url}}" alt="" class="mb-40" />-->
+						<video width="100%" height="auto" controls>
+                                  <source src="{{obj.intro_video.url}}" type="video/mp4">
+						</video>
+						<h3>Course Descriptions</h3>
+						<p> {{obj.discription | safe}}</p>
+						<h3>Curriculum</h3>
+						<ul class="list-none">
+						{% for course in courses %}
+							<li>
+								<i class="fa fa-check-square"></i>
+								<span>lecture : {{course.lecno}}</span> {{course.title}}
+							</li>
+							{% endfor %}
+						</ul>
+						<h3>Skill Require For This Course</h3>
+						<ul class="list-none">
+
+							<li>
+
+								<span>{{obj.skill}}</span> <br>
+								<span>{{obj.skill2}}</span> <br>
+								<span>{{obj.skill3}}</span> <br>
+								<span>{{obj.skill4}}</span> <br>
+								<span>{{obj.skill5}}</span>
+							</li>
+
+						</ul>
+					</div>
+					<!--rating-box-->
+<!--					<h3>Review and Rating</h3>-->
+					<!-- <div class="rating-box mt-25">
+						<div class="row">
+							<div class="col-lg-3">
+								<div class="rating-number d-table">
+									<div class="vertical-middle">
+										<h5>4.0</h5>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-o"></i>
+										<p>Average Rating</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-9 mt-sm-40">
+								<div class="row">
+									<div class="col-xl-2 col-lg-3 col-4">
+										<strong>5 stars</strong>
+									</div>
+									<div class="col-xl-8 col-lg-7 col-5">
+										<div class="single-progress">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="20"
+												aria-valuemin="0" aria-valuemax="100" style="width:20%">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-2 col-lg-2 col-2">
+										<span>1</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-2 col-lg-3 col-4">
+										<strong>4 stars</strong>
+									</div>
+									<div class="col-xl-8 col-lg-7 col-5">
+										<div class="single-progress">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="20"
+												aria-valuemin="0" aria-valuemax="100" style="width:20%">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-2 col-lg-2 col-2">
+										<span>1</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-2 col-lg-3 col-4">
+										<strong>3 stars</strong>
+									</div>
+									<div class="col-xl-8 col-lg-7 col-5">
+										<div class="single-progress">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="20"
+												aria-valuemin="0" aria-valuemax="100" style="width:20%">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-2 col-lg-2 col-2">
+										<span>1</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-2 col-lg-3 col-4">
+										<strong>2 stars</strong>
+									</div>
+									<div class="col-xl-8 col-lg-7 col-5">
+										<div class="single-progress">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0"
+												aria-valuemin="0" aria-valuemax="100" style="width:0%">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-2 col-lg-2 col-2">
+										<span>0</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xl-2 col-lg-3 col-4">
+										<strong>1 star</strong>
+									</div>
+									<div class="col-xl-8 col-lg-7 col-5">
+										<div class="single-progress">
+											<div class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="0"
+												aria-valuemin="0" aria-valuemax="100" style="width:0%">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-2 col-lg-2 col-2">
+										<span>0</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<!-- <div class="student-reviews mt-20">
+						<ul class="list-none">
+							{%for c in comments%}
+							<li>
+								<div class="student-thumb">
+									<a href="#"><img src="assets/images/courses/students/user1.png" alt="" /></a>
+									<a href="#">Student 1</a>
+									<small>1 Month Ago</small>
+								</div>
+								<div class="student-review">
+									<div class="students-rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+									<p>{{c.discription}}</p>
+								</div>
+							</li>
+							{% endfor %}
+							<li>
+								<div class="student-thumb">
+									<a href="#"><img src="assets/images/courses/students/user1.png" alt="" /></a>
+									<a href="#">Student 2</a>
+									<small>3 Months Ago</small>
+								</div>
+								<div class="student-review">
+									<div class="students-rating">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-o"></i>
+									</div>
+									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,</p>
+								</div>
+							</li>
+						</ul>
+					</div> -->
+<!--					Eikhan theke COmment uthate hobe-->
+<!--					<style>-->
+<!--						.star-rating form {-->
+<!--							display: none;-->
+<!--						}-->
+<!--						.star-rating .thanks-msg {-->
+<!--							display: none;-->
+<!--							font-size: 20px;-->
+<!--							margin: 40px auto;-->
+<!--							color: #4caf50;-->
+<!--							background-color: rgba(76, 175, 80, 0.1411764705882353);-->
+<!--							padding: 8px 20px;-->
+<!--							border-left: 3px solid #4caf50;-->
+<!--							border-radius: 20px;-->
+<!--						}-->
+<!--						.star-rating input {-->
+<!--							display: none;-->
+<!--						}-->
+<!--						.star-rating {-->
+<!--							margin: 50px auto;-->
+<!--							display: table;-->
+<!--							width: 350px;-->
+<!--						}-->
+<!--						.star-rating label {-->
+<!--							padding: 10px;-->
+<!--							float: right;-->
+<!--							font-size: 44px;-->
+<!--							color: #eee;-->
+<!--						}-->
+<!--						.star-rating input:not(:checked) ~ label:hover,-->
+<!--						.star-rating input:not(:checked) ~ label:hover ~ label {-->
+<!--							color: #ffc107;-->
+<!--						}-->
+<!--						.star-rating input:checked ~ label {-->
+<!--							color: #ffc107;-->
+<!--						}-->
+<!--						.star-rating form .rating-reaction:before {-->
+<!--							width: 100%;-->
+<!--							float: left;-->
+<!--							color: #ffc107;-->
+<!--						}-->
+<!--						.star-rating #rating-1:checked ~ form .rating-reaction:before {-->
+<!--							content: "so so";-->
+<!--						}-->
+<!--						.star-rating #rating-2:checked ~ form .rating-reaction:before {-->
+<!--							content: "I like it but don't very much";-->
+<!--						}-->
+<!--						.star-rating #rating-3:checked ~ form .rating-reaction:before {-->
+<!--							content: "It is good";-->
+<!--						}-->
+<!--						.star-rating #rating-4:checked ~ form .rating-reaction:before {-->
+<!--							content: "I like it";-->
+<!--						}-->
+<!--						.star-rating #rating-5:checked ~ form .rating-reaction:before {-->
+<!--							content: "I love it";-->
+<!--						}-->
+<!--						.star-rating input:checked ~ form {-->
+<!--							border-top: 1px solid #ddd;-->
+<!--							width: 100%;-->
+<!--							padding-top: 15px;-->
+<!--							margin-top: 15px;-->
+<!--							display: inline-block;-->
+<!--						}-->
+<!--						.star-rating form .rating-reaction {-->
+<!--							font-size: 24px;-->
+<!--							float: left;-->
+<!--							text-transform: capitalize;-->
+<!--						}-->
+<!--						.star-rating form .submit-rating {-->
+<!--							border: none;-->
+<!--							outline: none;-->
+<!--							background: #795548;-->
+<!--							color: #ffc107;-->
+<!--							font-size: 18px;-->
+<!--							border-radius: 4px;-->
+<!--							padding: 5px 15px;-->
+<!--							cursor: pointer;-->
+<!--							float: right;-->
+<!--						}-->
+<!--						form .submit-rating:hover {-->
+<!--							background-color: #333;-->
+<!--						}-->
+<!--					</style>-->
+<!--					<div class="star-rating">-->
+<!--						<div class="thanks-msg">Thanks for your feedback !!!</div>-->
+<!--						<div class="star-input">-->
+<!--							<input type="radio" name="rating" id="rating-5">-->
+<!--							<label for="rating-5" class="fas fa-star"></label>-->
+<!--							<input type="radio" name="rating" id="rating-4">-->
+<!--							<label for="rating-4" class="fas fa-star"></label>-->
+<!--							<input type="radio" name="rating" id="rating-3">-->
+<!--							<label for="rating-3" class="fas fa-star"></label>-->
+<!--							<input type="radio" name="rating" id="rating-2">-->
+<!--							<label for="rating-2" class="fas fa-star"></label>-->
+<!--							<input type="radio" name="rating" id="rating-1">-->
+<!--							<label for="rating-1" class="fas fa-star"></label>-->
+<!--			-->
+<!--							&lt;!&ndash; Rating Submit Form &ndash;&gt;-->
+<!--							<form>-->
+<!--								<span class="rating-reaction"></span>-->
+<!--								<button type="submit" class="submit-rating">Submit</button>-->
+<!--							</form>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<script>-->
+<!--						const btn = document.querySelector(".submit-rating");-->
+<!--						const thanksmsg = document.querySelector(".thanks-msg");-->
+<!--						const starRating = document.querySelector(".star-input");-->
+<!--						// Success msg show/hide-->
+<!--						btn.onclick = () => {-->
+<!--							starRating.style.display = "none";-->
+<!--							thanksmsg.style.display = "table";-->
+<!--							return false;-->
+<!--						};-->
+<!--					</script>-->
+<!--
+
+		.....................................Ei porjonto........................................ -->
+
+
+
+
+					<!-- <div class="contact-form input-form mt-50">
+						<h3>Post Your Review</h3>
+						<form method="POST" action="">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-sm-12 mt-30">
+									<textarea name="discription" placeholder="Message" required></textarea>
+								</div>
+								<div class="col-sm-12 mt-40">
+									<button type="submit" class="btn-common d-inline-block">Send message</button>
+								</div>
+							</div>
+						</form>
+						<div id="google-reviews"></div>
+					</div> -->
+				</div>
+				<div class="col-lg-4">
+					<!--course-features-->
+
+					<div class="course-features mt-sm-40 text-center">
+						<ul class="list-none">
+							<li>
+								<span>Course fee</span>
+								<span class="course-price">{{obj.price}} &#2547; </span>
+							</li>
+							<li>
+
+								<span><i class="fa fa-folder-open"></i>Lecturer</span>
+								<a target="_blank" href="{{obj.lecturer_Social_url}}"><span style="color:blue;">{{obj.lecturer}}</span></a>
+							</li>
+							<!-- <li>
+								<span><i class="fa fa-flag"></i>Duration</span>
+								<span>2  Months</span>
+							</li> -->
+						</ul>
+							{% if user.is_authenticated %}
+
+						<div class="course-features-bottom mt-30">
+							<a href="{%url 'carts' slug=obj.slug %}" class="btn-common">Take This Course</a>
+						</div>
+						{% else %}
+						<div class="course-features-bottom mt-30">
+							<a href="{%url 'regi'%}" class="btn-common">Take This Course</a>
+						</div>
+						{% endif %}
+					</div>
+					<!--course-author-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--course-details end-->
+
+{% endblock %}
