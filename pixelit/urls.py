@@ -4,6 +4,10 @@ from django.urls import path,include
 from App1 import views
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+admin.site.site_header="MetaIT Deshboard"
+admin.site.site_title="MetaIT Deshboard"
+admin.site.index_title="Welcome To MetaIT's Admin pannel"
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,7 +25,7 @@ urlpatterns = [
     path('course',views.all_courses,name="allcourse"),
     path('course/<slug:slug>',views.single,name="single"),
     path('all/',include("cart.urls")),
-    path('quiz/<slug:slug>', views.quiz_quiz, name='quiz'),
+    path('quiz', views.quiz_quiz, name='quiz'),
     path('details',include("Leacture_Details.urls")),
     path('test/',include("allcourses.urls")),
     path('all/course-details',views.t_course,name="t_course"),
@@ -34,6 +38,8 @@ urlpatterns = [
     path('search',views.search,name="search"),
     path('javascript-compiler',views.compiler_javascript,name="javascript"),
     path('html-compiler',views.compiler_html,name="html"),
+    path('hi',views.hi,name="hi"),
+    path('rating/<str:slug>/rating',views.rating,name="rate"),
 ]
 if settings.DEBUG:
     urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

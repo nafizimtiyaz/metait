@@ -33,14 +33,14 @@
 	<!-- responsive css -->
 	<link rel="stylesheet" href={%static "css/responsive.css"%}>
 </head>
-<body>
+<body class="bodyFixed">
 	<!--[if lte IE 9]>
 	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 	<![endif]-->
 
     <!-- Header Area -->
     <!--header-area start-->
-	<header id="sticker" class="header-area">
+	<header id="sticker" class="header-area headerFixed">
 		<div class="container-fluid">
 			<div class="row height-100 align-items-center">
 				<div class="col-2 togglarBtnDiv">
@@ -119,8 +119,11 @@
 	</header>
 	<!--header-area end-->
     <!-- End Header Area -->
+	<body>
   {% block body %}
         {% endblock %}
+
+	</body>
     <!-- Profile Main Body Area -->
 
     <!-- End Profile Main Body Area -->

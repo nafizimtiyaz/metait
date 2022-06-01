@@ -237,10 +237,10 @@ def search(request):
             Q(title__icontains=search)
         )
     return render(request,"search-course.html",{"a1":a1})
-def quiz_quiz(request,slug):
+def quiz_quiz(request):
     if request.method == 'POST':
         # print(request.POST)
-        questions = Quiz.objects.filter(slug=slug).all()
+        questions = Quiz.objects.all()
         score = 0
         wrong = 0
         correct = 0
@@ -266,7 +266,7 @@ def quiz_quiz(request,slug):
         }
         return render(request, 'result.html', context)
     else:
-        questions = Quiz.objects.filter(slug=slug).all()
+        questions = Quiz.objects.all()
         context = {
             'questions': questions
         }
@@ -278,3 +278,10 @@ def compiler_javascript(request):
     return render(request,"javascript.html")
 def compiler_html(request):
     return render(request,"html.html")
+
+@login_required()
+def hi(request):
+    return render(request,"hi.html")
+def rating(request,slug):
+    mycart = course.objects.get(slug=slug)
+    return render(request,'rating.html',{mycart:mycart})

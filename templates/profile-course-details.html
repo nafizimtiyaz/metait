@@ -3,7 +3,7 @@
 {% load static %}
 
     <div class="course_details_main_body">
-        <div class="container">
+        <div class="container fixedCon">
             <div class="row">
                 <div class="col-md-8 offset-2">
                     <div class="course_tab">
@@ -20,7 +20,7 @@
                             <li><a target="_blank" href="{%url 'main' title=c.title %}"><i class="fas fa-atlas"></i></i>{{c.title}}</a></li>
                             {%endfor%}
 
-                            <li><a target="_blank" href="{{Quiz.slug.url}}"><i class="fas fa-atlas"></i></i>Quiz</a></li>
+                            <li><a target="_blank" href="{%url 'quiz' %}"><i class="fas fa-atlas"></i></i>Quiz</a></li>
 
                         </ul>
                     </div>

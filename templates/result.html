@@ -1,0 +1,91 @@
+{% extends "pmain.html" %}
+{% block body %}
+{% load static %}
+ 
+<div class="container fixedCon">
+    <div class="row">
+        <div class="cool-md-6 offset-md-3">
+            <div class="card-columns" style="padding: 10px; margin: 20px;">
+                <div class="card" style="width: 32rem; border:5px black solid">
+                    <div class="card-body">
+                        <h1 class="card-title">Score: {{score}}</h1>
+                        <p class="card-text">Percentage: {{percent}}%</p>
+                        <p class="card-text">Time Taken: {{time}} seconds</p>
+                        <p class="card-text">Correct answers: {{correct}}</p>
+                        <p class="card-text">Incorrect answers: {{wrong}}</p>
+                        <p class="card-text">Total questions: {{total}}</p>
+                        <h5>All the best for next quiz!</h5>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-success" onclick="printDiv('certificate-container')">Print Certificate</button>
+        </div>
+    </div>
+    <div class="certificateBody">
+        
+        <div class="certificate-container" id="certificate-container">
+            <div class="certificate">
+                <div class="water-mark-overlay"></div>
+                <div class="certificate-header">
+                    <img src="{%static 'images/metaIT.png' %}" class="logo" alt="" />
+                </div>
+                <div class="certificate-body">
+                    <p class="certificate-title"><strong></strong></p>
+                    <h1>Certificate of Completion</h1>
+                    <p class="student-name">{{request.user.first_name}} {{request.user.last_name}}</p>
+                    <div class="certificate-content">
+                        <div class="about-certificate">
+                            <p>
+                               We certify That {{request.user.first_name}} {{request.user.last_name}} has completed Course SuccessFully and sincerely.
+                            </p>
+                        </div>
+                        <p class="topic-title">
+
+                        </p>
+                        <div class="text-center">
+                            <p class="topic-description text-muted">
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="certificate-footer text-muted">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>Admin : ______________________</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>
+                                            Accredited by
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>
+                                            Endorsed by
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function printDiv(divName){
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+
+    }
+</script>
+{% endblock body %}
