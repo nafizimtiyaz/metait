@@ -279,9 +279,3 @@ def compiler_javascript(request):
 def compiler_html(request):
     return render(request,"html.html")
 
-@login_required()
-def hi(request):
-    return render(request,"hi.html")
-def rating(request,slug):
-    mycart = course.objects.get(slug=slug)
-    return render(request,'rating.html',{mycart:mycart})

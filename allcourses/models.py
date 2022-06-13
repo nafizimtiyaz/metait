@@ -10,13 +10,13 @@ class course_details(models.Model):
     title=models.CharField(max_length=100,null=True)
     slug = models.SlugField(max_length=250, null=True, unique=False, blank=True)
     lecture_body= RichTextField(blank= True)
-    lecture_imgae=models.ImageField(upload_to="all_courses")
+    lecture_image=models.ImageField(upload_to="all_courses",null=True, blank=True)
     lecture_title1 = models.CharField(max_length=100, null=True, blank=True)
     lecture_body1 = models.TextField(max_length=10000, null=True, blank=True)
     lecture_imgae1 = models.ImageField(upload_to="all_courses", null=True, blank=True)
     video_link = models.CharField(max_length=1000, null=True, blank=True)
     link_height= models.IntegerField(blank=True)
-    video =models.FileField(upload_to="video",blank=True)
+    video =models.FileField(upload_to="video", blank=True, null=True)
     video_height = models.CharField(max_length=100, blank=True)
 
 
